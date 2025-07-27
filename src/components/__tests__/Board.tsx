@@ -41,19 +41,19 @@ describe('Board', () => {
   });
 
   it('should render 9 squares', () => {
-    render(<Board />);
+    render(<Board boardSize={3} />);
 
     const squares = screen.getAllByTestId(/square-empty/);
     expect(squares).toHaveLength(9);
   });
 
   it('should display current player turn', () => {
-    render(<Board />);
+    render(<Board boardSize={3} />);
     expect(screen.getByText(/Your turn X/)).toBeInTheDocument();
   });
 
   it('should change player on square click', () => {
-    render(<Board />);
+    render(<Board boardSize={3} />);
 
     const firstSquare = screen.getAllByTestId('square-empty')[0];
     fireEvent.click(firstSquare);
@@ -62,7 +62,7 @@ describe('Board', () => {
   });
 
   it('should change player when time expires', () => {
-    render(<Board />);
+    render(<Board boardSize={3} />);
 
     expect(screen.getByText(/Your turn X/)).toBeInTheDocument();
 
@@ -77,7 +77,7 @@ describe('Board', () => {
 
   it('should display timer with green color', () => {
     timeLeft = 8;
-    render(<Board />);
+    render(<Board boardSize={3} />);
 
     const timerElement = screen.getByText('8s');
 
@@ -86,7 +86,7 @@ describe('Board', () => {
 
   it('should display timer with yellow color', () => {
     timeLeft = 4;
-    render(<Board />);
+    render(<Board boardSize={3} />);
 
     const timerElement = screen.getByText('4s');
 
@@ -95,7 +95,7 @@ describe('Board', () => {
 
   it('should display timer with red color', () => {
     timeLeft = 2;
-    render(<Board />);
+    render(<Board boardSize={3} />);
 
     const timerElement = screen.getByText('2s');
 
@@ -104,14 +104,14 @@ describe('Board', () => {
 
   it('should display winner', () => {
     mockGetWinner.mockReturnValue('X');
-    render(<Board />);
+    render(<Board boardSize={3} />);
 
     expect(screen.getByText(/Player X wins!/)).toBeInTheDocument();
   });
 
   it('should display is tie message', () => {
     mockGetWinner.mockReturnValue(null);
-    render(<Board />);
+    render(<Board boardSize={3} />);
 
     const squares = screen.getAllByTestId('square-empty');
     squares.forEach(square => {
@@ -122,7 +122,7 @@ describe('Board', () => {
   });
 
   it('should reset game when reset button is clicked', () => {
-    render(<Board />);
+    render(<Board boardSize={3} />);
 
     const firstSquare = screen.getAllByTestId('square-empty')[0];
     fireEvent.click(firstSquare);

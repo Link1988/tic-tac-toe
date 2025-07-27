@@ -5,16 +5,16 @@ import useCountdown from "@/hooks/useCountdown";
 
 import getWinner from "@/helpers/getWinner";
 
-const ROW_SIZE = 3;
-
 type SquareValue = "X" | "O" | null;
 
-export default function Board() {
+export default function Board({ boardSize }: { boardSize: number }) {
+  const TOTAL_SQUARES = boardSize * boardSize;
+
   const [isX, setIsX] = useState(true);
-  const [squares, setSquares] = useState<SquareValue[]>(Array(9).fill(null));
+  const [squares, setSquares] = useState<SquareValue[]>(Array(TOTAL_SQUARES).fill(null));
 
   const currentPlayer: SquareValue = isX ? "X" : "O";
-  const winner = useMemo(() => getWinner(squares), [squares]);
+  const winner = useMemo(() => getWinner(squares, boardSize), [squares]);
   const isTie = squares.every((square) => square !== null) && !winner;
 
   const handleExpire = () => {
@@ -37,7 +37,7 @@ export default function Board() {
   };
 
   const resetGame = () => {
-    setSquares(Array(9).fill(null));
+    setSquares(Array(TOTAL_SQUARES).fill(null));
     resetTimer();
     setIsX(true);
   };
@@ -82,11 +82,16 @@ export default function Board() {
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-4">
-        {[...Array(ROW_SIZE)].map((_, row) => (
+      <div
+        className="grid gap-4"
+        style={{
+          gridTemplateColumns: `repeat(${boardSize}, minmax(0, 1fr))`,
+        }}
+      >
+        {[...Array(boardSize)].map((_, row) => (
           <div key={row} className="flex flex-col gap-4">
-            {[...Array(ROW_SIZE)].map((_, col) => {
-              const index = row * ROW_SIZE + col;
+            {[...Array(boardSize)].map((_, col) => {
+              const index = row * boardSize + col;
               return (
                 <Square
                   key={index}

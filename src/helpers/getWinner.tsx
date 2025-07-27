@@ -6,9 +6,11 @@ export default function getWinner(
 ): string | null {
   const lines = calculateWinner(rowSize);
 
-  for (const [a, b, c] of lines) {
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+  for (const line of lines) {
+    const firstSquare = squares[line[0]];
+
+    if (firstSquare && line.every(index => squares[index] === firstSquare)) {
+      return firstSquare;
     }
   }
 

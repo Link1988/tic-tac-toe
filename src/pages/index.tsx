@@ -17,7 +17,7 @@ export default function Home() {
     <div
       className={`${geistSans.className} ${geistMono.className} flex flex-col h-screen duration-700 p-6 bg-neutral-800 items-center justify-center`}
     >
-      <Board />
+      <Board boardSize={3}/>
     </div>
   );
 }

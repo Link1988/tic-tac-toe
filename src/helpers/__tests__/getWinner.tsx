@@ -1,28 +1,101 @@
-import getWinner from '@/helpers/getWinner';
+import getWinner from '../getWinner';
 
 describe('getWinner', () => {
-  it('row win', () => {
-    const squares = ['X', 'X', 'X', null, null, null, null, null, null];
-    expect(getWinner(squares)).toBe('X');
+  describe('3x3 board', () => {
+    it('row winner', () => {
+      const squares = [
+        'X', 'X', 'X',
+        null, null, null,
+        null, null, null
+      ];
+
+      expect(getWinner(squares, 3)).toBe('X');
+    });
+
+    it('column winner', () => {
+      const squares = [
+        'O', null, null,
+        'O', null, null,
+        'O', null, null
+      ];
+
+      expect(getWinner(squares, 3)).toBe('O');
+    });
+
+    it('diagonal winner (top-left to bottom-right)', () => {
+      const squares = [
+        'X', null, null,
+        null, 'X', null,
+        null, null, 'X'
+      ];
+
+      expect(getWinner(squares, 3)).toBe('X');
+    });
+
+    it('diagonal winner (top-right to bottom-left)', () => {
+      const squares = [
+        null, null, 'O',
+        null, 'O', null,
+        'O', null, null
+      ];
+
+      expect(getWinner(squares, 3)).toBe('O');
+    });
+
+    it('tie', () => {
+      const squares = [
+        'X', 'O', 'X',
+        'O', 'X', 'O',
+        'O', 'X', 'O'
+      ];
+
+      expect(getWinner(squares, 3)).toBe(null);
+    });
   });
 
-  it('column win', () => {
-    const squares = ['O', null, null, 'O', null, null, 'O', null, null];
-    expect(getWinner(squares)).toBe('O');
-  });
+  describe('4x4 board', () => {
+    it('row winner', () => {
+      const squares = [
+        'X', 'X', 'X', 'X',
+        null, null, null, null,
+        null, null, null, null,
+        null, null, null, null
+      ];
 
-  it('diagonal win (top-left to bottom-right)', () => {
-    const squares = ['X', null, null, null, 'X', null, null, null, 'X'];
-    expect(getWinner(squares)).toBe('X');
-  });
+      expect(getWinner(squares, 4)).toBe('X');
+    });
 
-  it('diagonal win (top-right to bottom-left)', () => {
-    const squares = [null, null, 'O', null, 'O', null, 'O', null, null];
-    expect(getWinner(squares)).toBe('O');
-  });
+    it('column winner', () => {
+      const squares = [
+        'O', null, null, null,
+        'O', null, null, null,
+        'O', null, null, null,
+        'O', null, null, null
+      ];
 
-  it('tie', () => {
-    const squares = ['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X'];
-    expect(getWinner(squares)).toBe(null);
+      expect(getWinner(squares, 4)).toBe('O');
+    });
+
+    it('diagonal winner (top-left to bottom-right)', () => {
+      const squares = [
+        'X', null, null, null,
+        null, 'X', null, null,
+        null, null, 'X', null,
+        null, null, null, 'X'
+      ];
+
+      expect(getWinner(squares, 4)).toBe('X');
+    });
+
+    it('diagonal winner (top-right to bottom-left)', () => {
+      const squares = [
+        null, null, null, 'O',
+        null, null, 'O', null,
+        null, 'O', null, null,
+        'O', null, null, null
+      ];
+
+      expect(getWinner(squares, 4)).toBe('O');
+    });
   });
 });
