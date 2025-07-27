@@ -1,40 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# 🎮 Tic-Tac-Toe Game
 
-## Getting Started
+A modern, interactive tic-tac-toe game built with **Next.js**, **React**, and **TypeScript**!
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **🎯 Classic Gameplay**: Classic tic-tac-toe game
+- **⏰ Countdown Timer**: Each player has 10 seconds to make their move
+- **🎨 Friendly UI**: Modern design with smooth animations and hover effects built with Tailwind CSS
+- **📱 Responsive Design**: Friendly for all devices (desktop, tablet and mobile).
+- **🏆 Win Detection**: Automatic winner detection and tie game handling
+- **🔄 Reset Game**: Start a new game anytime with the reset button
+- **🧪 Comprehensive Testing**: Full test coverage with Jest and React Testing Library.
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (version 16 or higher)
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd tic-tac-toe
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   ```
+
+3. **Start the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   ```
+
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000) and start playing! 🎉
+
+## 🏗️ Project Structure
+
+```
+tic-tac-toe/
+├── src/
+│   ├── components/         # React components
+│   │   ├── Board.tsx       # Main game board
+│   │   ├── Square.tsx      # Individual game squares
+│   │   └── Icons/          # X and O icons
+│   ├── hooks/              # Custom React hooks
+│   │   └── useCountdown.ts # Timer functionality
+│   ├── helpers/            # Game logic utilities
+│   │   └── getWinner.ts    # Win detection logic
+│   └── pages/              # Pages
+├── __tests__/              # Test files
+└── public/                 # Static assets
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🧪 Testing
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+This project includes comprehensive unit tests to ensure everything works perfectly:
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Run Tests
+```bash
+npm test
+# or
+yarn test
+# or
+pnpm test
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+### Test Coverage
+```bash
+npm run test:coverage
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Built With
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+- **[Next.js](https://nextjs.org/)** - React framework for production
+- **[React](https://reactjs.org/)** - UI library
+- **[TypeScript](https://www.typescriptlang.org/)** - Type safety
+- **[Tailwind CSS](https://tailwindcss.com/)** - Styling
+- **[Jest](https://jestjs.io/)** - Testing framework
+- **[React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)** - Component testing
