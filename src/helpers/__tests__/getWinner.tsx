@@ -42,7 +42,7 @@ describe('getWinner', () => {
       expect(getWinner(squares, 3)).toBe('O');
     });
 
-    it('tie', () => {
+    it('should tie', () => {
       const squares = [
         'X', 'O', 'X',
         'O', 'X', 'O',
@@ -96,6 +96,17 @@ describe('getWinner', () => {
       ];
 
       expect(getWinner(squares, 4)).toBe('O');
+    });
+
+    it('should tie', () => {
+      const squares = [
+        'X', 'O', 'X', 'O',
+        'O', 'X', 'O', 'X',
+        'X', 'O', 'X', 'O',
+        'X', 'O', 'X', 'O'
+      ];
+
+      expect(getWinner(squares, 4)).toBe(null);
     });
   });
 });
