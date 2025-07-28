@@ -14,7 +14,7 @@ export default function Board({ boardSize }: { boardSize: number }) {
   const [squares, setSquares] = useState<SquareValue[]>(Array(TOTAL_SQUARES).fill(null));
 
   const currentPlayer: SquareValue = isX ? "X" : "O";
-  const winner = useMemo(() => getWinner(squares, boardSize), [squares]);
+  const winner = useMemo(() => getWinner(squares, boardSize), [squares, boardSize]);
   const isTie = squares.every((square) => square !== null) && !winner;
 
   const handleExpire = () => {
